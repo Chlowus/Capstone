@@ -2,9 +2,9 @@
 import express from 'express'
 import cors from 'cors'
 // import path from 'path'
-import { userRouter } from './Controller/userController.js'
-import { productRouter } from './Controller/productController.js'
-import { cartRouter } from './Controller/cartController.js'
+import userRouter  from './Controller/userController.js'
+import productRouter from './Controller/productController.js'
+import cartRouter from './Controller/cartController.js'
 // import { userRouter } from './importer.js'
 // import { productRouter } from './importer.js'
 

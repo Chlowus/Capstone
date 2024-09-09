@@ -19,9 +19,7 @@ productRouter.post('/add', verifyAToken,  addProduct)
 productRouter.patch('/:id', verifyAToken, updateProduct)
 productRouter.delete('/:id', verifyAToken, deleteProduct)
 
-export {
-    productRouter
-}
+export default productRouter
 
 
 
