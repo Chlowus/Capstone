@@ -1,9 +1,9 @@
 import { connection as db } from '../config/index.js'
 import { createToken } from '../middleware/AuthenticateUser.js'
 import { compare, hash } from 'bcrypt'
-class Users {
-    fetchUsers(req, res) {
-        try {
+
+const fetchUsers = (req, res)=>  {
+     try {
             const strQry = `
         SELECT *
         FROM user;
@@ -22,7 +22,7 @@ class Users {
             })
         }
     }
-    fetchUser(req, res) {
+const fetchUser =(req, res)=> {
         try {
             const strQry = `
         SELECT *
@@ -43,7 +43,7 @@ class Users {
             })
         }
     }
-    async registerUser(req, res) {
+let registerUser = async(req, res) => {
         try {
             let data = req.body
             data.password = await hash(data.password, 12)
@@ -77,7 +77,7 @@ class Users {
             })
         }
     }
-    async updateUser(req, res) {
+const updateUser = async (req, res) => {
         try {
             let data = req.body
             if (data.password) {
@@ -102,7 +102,7 @@ class Users {
             })
         }
     }
-    deleteUser(req, res) {
+const deleteUser =(req, res) =>{
         try {
             const strQry = `
         DELETE FROM user
@@ -122,7 +122,7 @@ class Users {
             })
         }
     }
-    async login(req, res) {
+const login = async(req, res) =>{
         try {
             const { email, password } = req.body
             const strQry = `
@@ -166,9 +166,14 @@ class Users {
             })
         }
     }
-}
+
 export {
-    Users
+    fetchUsers,
+    fetchUser,
+    registerUser,
+    updateUser,
+    deleteUser,
+    login
 }
 
 

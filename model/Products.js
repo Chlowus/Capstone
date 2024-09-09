@@ -1,6 +1,6 @@
 import { connection as db } from '../config/index.js'
-class Products {
-    fetchProducts(req, res) {
+
+const fetchProducts = (req, res) => {
         try {
             const strQry = `
             SELECT *
@@ -20,7 +20,7 @@ class Products {
             })
         }
     }
-    recentProducts(req, res) {
+const recentProducts = (req, res) => {
         try {
             const strQry = `
             SELECT *
@@ -42,7 +42,7 @@ class Products {
             })
         }
     }
-    fetchProduct(req, res) {
+const fetchProduct = (req, res) => {
         try {
             const strQry = `
             SELECT *
@@ -63,7 +63,7 @@ class Products {
             })
         }
     }
-    addProduct(req, res) {
+const addProduct = (req, res) => {
         try {
             const strQry = `
             INSERT INTO products
@@ -83,7 +83,7 @@ class Products {
             })
          }
     }
-    updateProduct(req, res) {
+const updateProduct = (req, res) => {
         try {
             const strQry = `
             UPDATE products
@@ -104,7 +104,7 @@ class Products {
             })
         }
     }
-    deleteProduct(req, res) {
+const deleteProduct = (req, res) => {
         try {
             const strQry = `
             DELETE FROM products
@@ -124,9 +124,14 @@ class Products {
             })
         }
     }
-}
+
 export {
-    Products
+    fetchProducts,
+    recentProducts,
+    fetchProduct,
+    addProduct,
+    updateProduct,
+    deleteProduct
 }
 
 

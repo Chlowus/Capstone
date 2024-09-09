@@ -1,30 +1,26 @@
 import express from 'express'
-import bodyParser from 'body-parser'
-import { products } from '../model/index.js'
+
+import {
+    fetchProducts,
+    recentProducts,
+    fetchProduct,
+    addProduct,
+    updateProduct,
+    deleteProduct
+} from '../model/Products.js'
+
 import { verifyAToken } from '../middleware/AuthenticateUser.js'
 
 const productRouter = express.Router()
-productRouter.use(bodyParser.json())
 
-productRouter.get('/', verifyAToken,  (req, res) => {
-    products.fetchProducts(req, res)
-})
+productRouter.get('/', verifyAToken,fetchProducts)
+productRouter.get('/:id', verifyAToken, fetchProduct)
+productRouter.post('/add', verifyAToken,  addProduct)
+productRouter.patch('/:id', verifyAToken, updateProduct)
+productRouter.delete('/:id', verifyAToken, deleteProduct)
 
-productRouter.get('/:id', verifyAToken, (req, res) => {
-    products.fetchProduct(req, res)
-})
-productRouter.post('/add', verifyAToken, (req, res) => {
-    products.addProduct(req, res)
-})
-productRouter.patch('/:id', verifyAToken, (req, res) => {
-    products.updateProduct(req, res)
-})
-productRouter.delete('/:id', verifyAToken, (req, res) => {
-    
-    products.deleteProduct(req, res)
-})
 export {
-    productRouter, express
+    productRouter
 }
 
 

@@ -1,6 +1,6 @@
 import {connection as db} from '../config/index.js'
-class Carts{
-    fetchCarts(req, res) {
+
+const fetchCarts = (req, res) => {
         try{
             const strQry = `
             SELECT distinct c.user_ID, CONCAT(u.first_name, ' ', u.last_name) AS fullName,
@@ -26,7 +26,7 @@ class Carts{
             })
         }
     }
-    fetchuserCart(req, res) {
+const fetchuserCart = (req, res) => {
         try{
             const strQry = `
             SELECT c.user_ID, CONCAT(u.first_name, ' ', u.last_name) AS fullName,
@@ -53,7 +53,7 @@ class Carts{
             })
         }
     }
-    fetchaddUserCart(req, res)  {
+const fetchaddUserCart = (req, res) =>  {
         try{
             const strQry = `
             INSERT INTO Cart
@@ -75,7 +75,7 @@ class Carts{
             })
         }
     }
-    fetchupdateUserCart(req, res) {
+const fetchupdateUserCart = (req, res) => {
         try{
             const strQry = `
             UPDATE Cart
@@ -96,7 +96,7 @@ class Carts{
             })
         }
     }
-    deleteItem(req, res) {
+const deleteItem = (req, res) => {
         try{
             const strQry = `
             DELETE FROM Cart
@@ -116,8 +116,8 @@ class Carts{
             })
         }
     }
-    deleteCart(req,res){
-        try{
+const deleteCart = (req,res)=>{
+        try {
             const strQry = `
             DELETE FROM Cart
             WHERE user_ID = ${req.params.id};
@@ -136,9 +136,14 @@ class Carts{
             })
         }
     }
-}
+
 export {
-    Carts
+    fetchCarts,
+    fetchaddUserCart,
+    fetchuserCart,
+    fetchupdateUserCart,
+    deleteItem,
+    deleteCart
 }
 
 
