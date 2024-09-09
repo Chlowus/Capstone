@@ -20,7 +20,6 @@ productRouter.patch('/:id', verifyAToken, (req, res) => {
     products.updateProduct(req, res)
 })
 productRouter.delete('/:id', verifyAToken, (req, res) => {
-    console.log('hey');
     
     products.deleteProduct(req, res)
 })
