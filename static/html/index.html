@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Users</h2>
+    <table>
+        <tr>
+            <th>HTTP Methods</th>
+            <th>Path</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>GET</td>
+            <td>/users</td>
+            <td>Fetches all the users</td>
+        </tr>
+        <tr>
+            <td>GET</td>
+            <td>/users/singleUser:id</td>
+            <td>Fetches a user by their ID</td>
+        </tr>
+        <tr>
+            <td>POST</td>
+            <td>/users/register</td>
+            <td>Registers a user</td>
+        </tr>
+        <tr>
+            <td>PATCH</td>
+            <td>/users/:id</td>
+            <td>Updates a user by their ID</td>
+        </tr>
+        <tr>
+            <td>DELETE</td>
+            <td>/users/:id</td>
+            <td>Deletes a user by their ID</td>
+        </tr>
+    </table>
+
+    <h2>Products</h2>
+    <table>
+        <tr>
+            <th>HTTP Methods</th>
+            <th>Path</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>GET</td>
+            <td>/products</td>
+            <td>Fetches all the products</td>
+        </tr>
+        <tr>
+            <td>GET</td>
+            <td>/products/:id</td>
+            <td>Fetches a product by its ID</td>
+        </tr>
+        <tr>
+            <td>POST</td>
+            <td>/products/add</td>
+            <td>Adds a product</td>
+        </tr>
+        <tr>
+            <td>PATCH</td>
+            <td>/products/:id</td>
+            <td>Updates by its ID</td>
+        </tr>
+        <tr>
+            <td>DELETE</td>
+            <td>/products/:id</td>
+            <td>Deletes a product by its ID</td>
+        </tr>
+    </table>
+
+    <h2>Carts</h2>
+    <table>
+        <tr>
+            <th>HTTP Methods</th>
+            <th>Path</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>GET</td>
+            <td>/users/carts</td>
+            <td>Fetches all the users carts</td>
+        </tr>
+        <tr>
+            <td>GET</td>
+            <td>/users/:id/cart</td>
+            <td>Fetches a single users cart by its ID</td>
+        </tr>
+        <tr>
+            <td>POST</td>
+            <td>/users/:id/cart</td>
+            <td>Adds a quantity and Product to the users cart</td>
+        </tr>
+        <tr>
+            <td>PATCH</td>
+            <td>/users/:id/cart/:product_ID</td>
+            <td>Updates a users cart by using their ID and Product ID</td>
+        </tr>
+        <tr>
+            <td>DELETE</td>
+            <td>/users/:id/cart</td>
+            <td>Deletes an entire users cart</td>
+        </tr>
+        <tr>
+            <td>DELETE</td>
+            <td>/users/:id/cart/:product_ID</td>
+            <td>Deletes a single item from a users cart</td>
+        </tr>
+    </table>
+</body>
+</html>

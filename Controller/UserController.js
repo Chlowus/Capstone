@@ -11,7 +11,7 @@ userRouter.use(bodyParser.json())
 userRouter.get('/', (req, res) => {
     users.fetchUsers(req, res)
 })
-userRouter.get('/singleuser/:id', (req, res) => {
+userRouter.get('/singleUser/:id', (req, res) => {
     users.fetchUser(req, res)
 })
 userRouter.post('/register', (req, res) => {
@@ -36,13 +36,13 @@ userRouter.get('/:id/cart', (req, res) =>{
 userRouter.post('/:id/cart', (req, res) =>{
     carts.fetchaddUserCart(req, res)
 })
-userRouter.patch('/:id/cart/:prodID', (req, res) =>{
+userRouter.patch('/:id/cart/:product_ID', (req, res) =>{
     carts.fetchupdateUserCart(req, res)
 })
 userRouter.delete('/:id/cart', (req, res) => {
     carts.deleteCart(req, res)
 })
-userRouter.delete('/:id/cart/:prodID',(req, res) =>{
+userRouter.delete('/:id/cart/:product_ID',(req, res) =>{
     carts.deleteItem(req,res)
 })
 
