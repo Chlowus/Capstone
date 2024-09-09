@@ -1,4 +1,5 @@
-import { express } from './Controller/userController.js'
+
+import express from 'express'
 import cors from 'cors'
 import path from 'path'
 import { userRouter } from './importer.js'
