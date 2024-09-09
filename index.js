@@ -4,6 +4,8 @@ import cors from 'cors'
 import path from 'path'
 import { userRouter } from './importer.js'
 import { productRouter } from './importer.js'
+// import { userRouter } from './importer.js'
+// import { productRouter } from './importer.js'
 
 // Create an express app
 const app = express()
