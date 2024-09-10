@@ -25,7 +25,7 @@ app.use('/users', userRouter)
 app.use('/products', productRouter)
 app.use('/cart', cartRouter)
 app.use(
-    express.static('./static'),
+    express.static('static'),
     // express.json(),
     // express.urlencoded({
     //     extended: true
@@ -45,6 +45,7 @@ app.get('*', (req, res) => {
     })
 })
 app.listen(port, () => {
+    console.log(`http://localhost:${port}`);
     console.log(`Server is running on ${port}`);
 })
 
