@@ -22,7 +22,7 @@ userRouter.post('/login',  login)
 
 
 
-export default  userRouter
+export {userRouter}
 
 
 
