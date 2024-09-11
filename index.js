@@ -1,71 +1,41 @@
-
-import express from 'express'
-import cors from 'cors'
-// import path from 'path'
-import userRouter  from './Controller/userController.js'
-import productRouter from './Controller/productController.js'
-import cartRouter from './Controller/CartController.js'
-// import { userRouter } from './importer.js'
-// import { productRouter } from './importer.js'
+import express from 'express';
+import cors from 'cors';
+import userRouter from './Controller/userController.js';
+import productRouter from './Controller/productController.js';
+import cartRouter from './Controller/CartController.js';
 
 // Create an express app
-const app = express()
-const port = +process.env.PORT || 4000
+const app = express();
+const port = +process.env.PORT || 4000;
+
 // Middleware
-// app.use((req, res, next) => {
-//     res.header("Access-Control-Allow-Origin", "*");
-//     res.header("Access-Control-Allow-Credentials", "true");
-//     res.header("Access-Control-Allow-Methods", "*");
-//     res.header("Access-Control-Request-Methods", "*");
-//     res.header("Access-Control-Allow-Headers", "*");
-//     res.header("Access-Control-Expose-Headers", "Authorization");
-//     next()
-// })
-app.use('/users', userRouter)
-app.use('/products', productRouter)
-app.use('/cart', cartRouter)
 app.use(
-    express.static('static'),
-    // express.json(),
-    // express.urlencoded({
-    //     extended: true
-    // }),
     cors({
-        origin: '*',
-        credentials:true
+        origin: '*',  // Adjust this as needed for security (e.g., specify allowed origins)
+        credentials: true
     })
-)
+);
+app.use(express.json());  // Make sure to include express.json() if you're handling JSON requests
+app.use(express.urlencoded({ extended: true }));  // Make sure to include this if you're handling form submissions
+
+app.use('/users', userRouter);
+app.use('/products', productRouter);
+app.use('/cart', cartRouter);
+
+app.use(express.static('static'));
+
+// Optional: Serve a static HTML file if requested
 // app.get('^/$|/GameVaults', (req, res) => {
-//     res.status(200).sendFile(path.resolve('./static/html/index.html'))
-// })
+//     res.status(200).sendFile(path.resolve('./static/html/index.html'));
+// });
+
 app.get('*', (req, res) => {
-    res.json({
+    res.status(404).json({
         status: 404,
         msg: 'Resource not found'
-    })
-})
+    });
+});
+
 app.listen(port, () => {
-    console.log(`http://localhost:${port}`);
-    console.log(`Server is running on ${port}`);
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    console.log(`Server is running on http://localhost:${port}`);
+});
