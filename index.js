@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: true }));  // Make sure to include this i
 
 app.use('/users', userRouter);
 app.use('/products', productRouter);
-app.use('/cart', cartRouter);
+app.use('/carts', cartRouter);
 
 app.use(express.static('static'));
 

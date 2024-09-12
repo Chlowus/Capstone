@@ -149,6 +149,7 @@ const login = async(req, res) =>{
                         res.json({
                             status: res.statusCode,
                             token,
+                            msg: 'You have logged in successfully.',
                             result: result[0]
                         })
                     } else {

@@ -32,7 +32,9 @@ const fetchuserCart = (req, res) => {
             SELECT c.user_ID, CONCAT(u.first_name, ' ', u.last_name) AS fullName,
                 p.product_ID,
                 p.product_name 'Product',
-                p.product_price * c.quantity  'Total Price',
+                p.product_image 'image',
+                p.product_price  'UnitPrice',
+                p.product_price * c.quantity  'TotalPrice',
                 c.quantity 'Quantity'
             FROM Cart c
             JOIN user u ON c.user_ID = u.user_ID
@@ -60,6 +62,7 @@ const fetchaddUserCart = (req, res) =>  {
             (user_ID, product_ID, quantity)
             VALUES (${req.params.id}, ${req.body.product_ID}, ${req.body.quantity});
             `
+            
             console.log(req.params.id, req.body.product_ID, req.body.quantity);
             db.query(strQry, (err, results) => {
                 if (err) throw new Error(err)
