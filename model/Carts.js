@@ -56,6 +56,8 @@ const fetchuserCart = (req, res) => {
         }
     }
 const fetchaddUserCart = (req, res) =>  {
+    console.log('hehe');
+    
         try{
             const strQry = `
             INSERT INTO Cart

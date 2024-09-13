@@ -43,19 +43,42 @@ const fetchUser =(req, res)=> {
             })
         }
     }
+const fetchUserhehe =(req, res)=> {
+        try {
+            const strQry = `
+        SELECT *
+        FROM user
+        WHERE user_ID = ${req.body.user.user_ID};
+        `
+            db.query(strQry, (err, result) => {
+                if (err) throw new Error(err)
+                res.json({
+                    status: res.statusCode,
+                    result: result[0]
+                })
+            })
+        } catch (e) {
+            res.json({
+                status: 404,
+                msg: 'Please try again later.'
+            })
+        }
+    }
 let registerUser = async(req, res) => {
         try {
             let data = req.body
             data.password = await hash(data.password, 12)
+          
             // Payload
+            
             let user = {
                 email: data.email,
-                password: data.password
+                password: data.password,
             }
             let strQry = `
-        INSERT INTO user
-        SET ?;
-        `
+                    INSERT INTO user
+                    SET ?;
+                    `
             db.query(strQry, [data], (err) => {
                 if (err) {
                     res.json({
@@ -63,9 +86,9 @@ let registerUser = async(req, res) => {
                         msg: 'This email has already been taken'
                     })
                 } else {
-                    const token = createToken(user)
+                    // const token = createToken(user)
                     res.json({
-                        token,
+                        // token,
                         msg: 'You are now registered.'
                     })
                 }
@@ -141,10 +164,12 @@ const login = async(req, res) =>{
                     )
                 } else {
                     const isValidPass = await compare(password, result[0].password)
+                    console.log(result);
+                    let [{user_ID}] = result
                     if (isValidPass) {
                         const token = createToken({
                             email,
-                            password
+                            user_ID
                         })
                         res.json({
                             status: res.statusCode,
@@ -174,7 +199,8 @@ export {
     registerUser,
     updateUser,
     deleteUser,
-    login
+    login,
+    fetchUserhehe
 }
 
 

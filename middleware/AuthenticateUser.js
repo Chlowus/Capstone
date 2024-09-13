@@ -3,10 +3,12 @@ import jwt from 'jsonwebtoken'
 const { sign, verify } = jwt
 
 const createToken = (user)=> {
+    console.log(user);
+    
     return sign(
         {
             emailAdd: user.email,
-            pwd: user.password
+            id:user.user_ID
         },
         process.env.SECRET_KEY,
         {
@@ -18,6 +20,10 @@ const verifyAToken = (req, res, next) =>{
     const token = req?.headers["authorization"]
     if (token) {
         if (verify(token, process.env.SECRET_KEY)) {
+            let user = verify(token,process.env.SECRET_KEY)
+            console.log(user);
+            
+            req.body.user = user
             next()
         } else {
             res?.json({

@@ -5,8 +5,10 @@ import {
     registerUser,
     updateUser,
     deleteUser,
-    login
+    login,
+    fetchUserhehe
 } from '../model/Users.js'
+import { verifyAToken } from '../middleware/AuthenticateUser.js'
 
 
 const userRouter = express.Router()
@@ -14,6 +16,7 @@ const userRouter = express.Router()
 // User endpoints
 userRouter.get('/',fetchUsers)
 userRouter.get('/singleUser/:id',  fetchUser)
+userRouter.get('/single',verifyAToken,  fetchUserhehe)
 userRouter.post('/register',  registerUser)
 userRouter.patch('/:id',  updateUser)
 userRouter.delete('/:id',  deleteUser)
