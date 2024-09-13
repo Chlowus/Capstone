@@ -7,6 +7,7 @@ import cartRouter from './Controller/CartController.js';
 // Create an express app
 const app = express();
 const port = +process.env.PORT || 4000;
+app.use(express.static('static'));
 
 // Middleware
 app.use(
