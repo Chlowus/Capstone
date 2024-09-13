@@ -18,8 +18,8 @@ userRouter.get('/',fetchUsers)
 userRouter.get('/singleUser/:id',  fetchUser)
 userRouter.get('/single',verifyAToken,  fetchUserhehe)
 userRouter.post('/register',  registerUser)
-userRouter.patch('/:id',  updateUser)
-userRouter.delete('/:id',  deleteUser)
+userRouter.patch('/:id', verifyAToken, updateUser)
+userRouter.delete('/:id', verifyAToken, deleteUser)
 userRouter.post('/login',  login)
 
 
