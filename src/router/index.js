@@ -1,11 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import ProductsView from '../views/HomeView.vue'
+import ProductsView from '../views/ProductsView.vue'
 import CheckoutView from '../views/CheckoutView.vue'
 import LoginView from '../views/LoginView.vue'
+import SignUpView from '../views/SignUpView.vue'
 import ContactView from '../views/ContactView.vue'
 import AdminView from '../views/AdminView.vue'
-
+import ProfileView from '../views/ProfileView.vue'
 
 const routes = [
   {
@@ -14,19 +15,24 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/',
+    path: '/sauces',
     name: 'products',
     component: ProductsView
   },
   {
-    path: '/',
+    path: '/cart',
     name: 'checkout',
     component: CheckoutView
   },
   {
-    path: '/',
+    path: '/login',
     name: 'login',
     component: LoginView
+  },
+  {
+    path: '/signup',
+    name: 'signup',
+    component: SignUpView
   },
   {
     path: '/about',
@@ -37,14 +43,19 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
   },
   {
-    path: '/',
+    path: '/contact',
     name: 'contact',
     component: ContactView
   },
   {
-    path: '/',
+    path: '/admin',
     name: 'admin',
     component: AdminView
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: ProfileView
   }
 ]
 
